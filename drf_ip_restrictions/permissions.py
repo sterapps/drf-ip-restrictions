@@ -12,7 +12,7 @@ class AllowedIpList(object):
 
         if client_ip:
             settings = ip_restriction_settings()
-            allowed_ips = settings.ALLOWED_IP_LIST
+            allowed_ips = getattr(self.setting_ip_list, settings.ALLOWED_IP_LIST)
             for allowed_ip in allowed_ips:
                 if client_ip == allowed_ip or client_ip.startswith(allowed_ip):
                     return True
